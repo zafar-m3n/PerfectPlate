@@ -23,16 +23,12 @@ Route::group(['middleware'=>'auth'], function(){
     Route::put('User/profile',[ProfileController::class,'updateProfile'])->name('profile.update');
     Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('password.update');
     Route::post('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar.update');
-
 });
 //Route::middleware(['auth'])->group(function () {
 //    Route::resource('admin/coupon', CouponController::class);
 //});
 //product details page
 Route::get('/product/{slug}', [FrontendController::class, 'showProduct'])->name('product.show');
-
-
-
 //Product Modal Route
 Route::get('frontend/load-product-modal/{productId}', [FrontendController::class, 'loadProductModal'])->name('frontend.load-product-modal');
 
@@ -55,10 +51,5 @@ Route::get('frontend/destroy-coupon', [FrontendController::class, 'destroyCoupon
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('checkout',[CheckoutController::class, 'index'])->name('checkout.index');
-
-
-Route::post('checkout', [CheckoutController::class, 'checkoutRedirect'])->name('checkout.redirect');
-
-
-
+    Route::post('checkout', [CheckoutController::class, 'checkoutRedirect'])->name('checkout.redirect');
 });
