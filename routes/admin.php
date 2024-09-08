@@ -3,6 +3,7 @@
 <?php
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductGalleryController;
 use App\Http\Controllers\Admin\ProductOptionController;
 use App\Http\Controllers\Admin\ProductSizeController;
@@ -57,6 +58,9 @@ Route::resource('category', CategoryController::class);
 //manage product creation
 
 Route::resource('product', ProductController::class)->except(['show']);
+//order routes
+
+Route::resource('order', OrderController::class)->except(['create', 'store']);
 
 //manage product gallery
 Route::get('product-gallery/{product}',[ProductGalleryController::class,'index'])->name('product-gallery.show-index');

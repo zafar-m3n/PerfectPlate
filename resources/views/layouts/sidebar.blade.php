@@ -10,9 +10,8 @@
     </form>
     <ul class="navbar-nav navbar-right">
 
-
         <li class="dropdown"><a href="#" data-toggle="dropdown"
-                                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <img src="{{ asset(auth()->user()->avatar) }}" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name }}</div>
             </a>
@@ -51,32 +50,33 @@
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
 
-
-
             <li class=active><a class="nav-link" href="index-0.html"><i class="fas fa-fire"></i>General Dashboard</a>
             </li>
 
-
             </li>
             <li class="menu-header">Starter</li>
-            <li><a class="nav-link" href="{{ route('slider.index') }}"><i class="far fa-square"></i> <span>Slider</span></a></li>
+            <li><a class="nav-link" href="{{ route('slider.index') }}"><i class="far fa-square"></i>
+                    <span>Slider</span></a></li>
             <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Manage Canteen</span></a>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                    <span>Manage Canteen</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href={{ route('category.index') }}>Product Categories</a></li>
                     <li><a class="nav-link" href={{ route('product.index') }}>Products</a></li>
+                    <li><a class="nav-link" href={{ route('order.index') }}>Orders</a></li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Manage Ecommerce</span></a>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                    <span>Manage Ecommerce</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.coupon.index') }}">Coupon</a></li>
                 </ul>
             </li>
-            <li><a class="nav-link" href="{{route('admin.setting.index')}}"><i class="far fa-square"></i> <span>Settings</span></a></li>
+            <li><a class="nav-link" href="{{ route('admin.setting.index') }}"><i class="far fa-square"></i>
+                    <span>Settings</span></a></li>
 
         </ul>
-
 
     </aside>
 </div>
