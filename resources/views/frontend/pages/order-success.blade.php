@@ -1,10 +1,22 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <section class="order-success">
-        <div class="container">
-            <h1>Thank you for your order!</h1>
-            <p>Your order has been placed successfully.</p>
+    <!--=============================
+                                                                                BREADCRUMB START
+                                                                            ==============================-->
+    <section class="fp__breadcrumb" style="background: url({{ asset('frontend/images/counter_bg.jpg') }});">
+        <div class="fp__breadcrumb_overlay">
+            <div class="container">
+                <div class="fp__breadcrumb_text">
+                    <h1>Order Sucess</h1>
+                    <h6 style="color: white; text-align:center;">Your order has been successfully placed. Check your orders
+                        page for updates on
+                        the order.</h6>
+                </div>
+            </div>
         </div>
     </section>
+    <!--=============================
+                                                                                BREADCRUMB END
+                                                                            ==============================-->
 @endsection
