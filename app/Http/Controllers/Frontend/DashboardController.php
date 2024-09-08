@@ -4,12 +4,20 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Order;
 
 class DashboardController extends Controller
 {
-    function index() : View {
-        return view('frontend.dashboard.index');
-}
+    // Display the user dashboard with their orders
+    public function index(): View {
+        $orders = Order::where('user_id', Auth::id())->with('items')->get();
+        return view('frontend.dashboard.index', compact('orders'));
+    }
 
+    // Display a specific order invoice
+    public function showOrderInvoice($id): View {
+        $order = Order::with('items')->findOrFail($id);
+        return view('frontend.dashboard.invoice', compact('order'));
+    }
 }

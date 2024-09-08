@@ -14,12 +14,12 @@
         </div>
     </section>
     <!--=============================
-           BREADCRUMB END
-       ==============================-->
+                       BREADCRUMB END
+                   ==============================-->
 
     <!--=========================
-           DASHBOARD START
-       ==========================-->
+                       DASHBOARD START
+                   ==========================-->
     <section class="fp__dashboard mt_120 xs_mt_90 mb_100 xs_mb_70">
         <div class="container">
             <div class="fp__dashboard_area">
@@ -57,7 +57,7 @@
                                     @csrf
 
                                     <button class="nav-link"onclick="event.preventDefault();
-                                               this.closest('form').submit();" type="button"><span> <i
+                                                           this.closest('form').submit();" type="button"><span> <i
                                                 class="fas fa-sign-out-alt"></i>
                                         </span> Logout</button>
                                 </form>
@@ -143,7 +143,7 @@
                                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
                                     aria-labelledby="v-pills-profile-tab">
                                     <div class="fp_dashboard_body">
-                                        <h3>order list</h3>
+                                        <h3>Order List</h3>
                                         <div class="fp_dashboard_order">
                                             <div class="table-responsive">
                                                 <table class="table">
@@ -155,78 +155,53 @@
                                                             <th>Amount</th>
                                                             <th>Action</th>
                                                         </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <h5>#2545758745</h5>
-                                                            </td>
-                                                            <td>
-                                                                <p>July 16, 2022</p>
-                                                            </td>
-                                                            <td>
-                                                                <span class="complete">Completed</span>
-                                                            </td>
-                                                            <td>
-                                                                <h5>$560</h5>
-                                                            </td>
-                                                            <td><a class="view_invoice">View Details</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <h5>#2457945235</h5>
-                                                            </td>
-                                                            <td>
-                                                                <p>Jan 21, 2021</p>
-                                                            </td>
-                                                            <td>
-                                                                <span class="complete">Completed</span>
-                                                            </td>
-                                                            <td>
-                                                                <h5>$654</h5>
-                                                            </td>
-                                                            <td><a class="view_invoice">View Details</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <h5>#2456875648</h5>
-                                                            </td>
-                                                            <td>
-                                                                <p>July 11, 2020</p>
-                                                            </td>
-                                                            <td>
-                                                                <span class="active">Active</span>
-                                                            </td>
-                                                            <td>
-                                                                <h5>$440</h5>
-                                                            </td>
-                                                            <td><a class="view_invoice">View Details</a></td>
-                                                        </tr>
+
+                                                        <!-- Dynamically display the orders -->
+                                                        @foreach ($orders as $order)
+                                                            <tr>
+                                                                <td>
+                                                                    <h5>#{{ $order->id }}</h5>
+                                                                </td>
+                                                                <td>
+                                                                    <p>{{ $order->created_at->format('F d, Y') }}</p>
+                                                                </td>
+                                                                <td>
+                                                                    <span
+                                                                        class="{{ $order->status == 'Completed' ? 'complete' : 'active' }}">
+                                                                        {{ $order->status }}
+                                                                    </span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5>${{ number_format($order->total, 2) }}</h5>
+                                                                </td>
+                                                                <td><a class="view_invoice">View Details</a></td>
+                                                            </tr>
+                                                        @endforeach
+
                                                     </tbody>
                                                 </table>
+                                                @if ($orders->isEmpty())
+                                                    <p>No orders found.</p>
+                                                @endif
                                             </div>
                                         </div>
 
+                                        <!-- Static Invoice Section -->
                                         <div class="fp__invoice">
                                             <a class="go_back"><i class="fas fa-long-arrow-alt-left"></i> go back</a>
                                             <div class="fp__track_order">
                                                 <ul>
-                                                    <li class="active">order pending</li>
-                                                    <li>order accept</li>
-                                                    <li>order process</li>
-                                                    <li>on the way</li>
+                                                    <li class="active">Order Pending</li>
+                                                    <li class="active">Order Accept</li>
+                                                    <li>Order Process</li>
+                                                    <li>On The Way</li>
                                                     <li>Completed</li>
                                                 </ul>
                                             </div>
                                             <div class="fp__invoice_header">
                                                 <div class="header_address">
-                                                    <h4>invoice to</h4>
-                                                    <p>7232 Broadway Suite 308, Jackson Heights, 11372, NY, United
-                                                        States</p>
-                                                    <p>+1347-430-9510</p>
-                                                </div>
-                                                <div class="header_address">
-                                                    <p><b>invoice no: </b><span>4574</span></p>
                                                     <p><b>Order ID:</b> <span> #4789546458</span></p>
-                                                    <p><b>date:</b> <span>10-11-2022</span></p>
+                                                    <p><b>Date:</b> <span>10-11-2022</span></p>
                                                 </div>
                                             </div>
                                             <div class="fp__invoice_body">
@@ -235,7 +210,7 @@
                                                         <tbody>
                                                             <tr class="border_none">
                                                                 <th class="sl_no">SL</th>
-                                                                <th class="package">item description</th>
+                                                                <th class="package">Item Description</th>
                                                                 <th class="price">Price</th>
                                                                 <th class="qnty">Quantity</th>
                                                                 <th class="total">Total</th>
@@ -279,7 +254,7 @@
                                                         <tfoot>
                                                             <tr>
                                                                 <td class="package" colspan="3">
-                                                                    <b>sub total</b>
+                                                                    <b>Sub Total</b>
                                                                 </td>
                                                                 <td class="qnty">
                                                                     <b>12</b>
@@ -325,9 +300,6 @@
                                                     </table>
                                                 </div>
                                             </div>
-                                            <a class="print_btn common_btn" href="#"><i class="far fa-print"></i>
-                                                print
-                                                PDF</a>
                                         </div>
                                     </div>
                                 </div>
