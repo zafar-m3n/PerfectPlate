@@ -14,12 +14,12 @@
         </div>
     </section>
     <!--=============================
-                       BREADCRUMB END
-                   ==============================-->
+                                       BREADCRUMB END
+                                   ==============================-->
 
     <!--=========================
-                       DASHBOARD START
-                   ==========================-->
+                                       DASHBOARD START
+                                   ==========================-->
     <section class="fp__dashboard mt_120 xs_mt_90 mb_100 xs_mb_70">
         <div class="container">
             <div class="fp__dashboard_area">
@@ -57,8 +57,8 @@
                                     @csrf
 
                                     <button class="nav-link"onclick="event.preventDefault();
-                                                           this.closest('form').submit();" type="button"><span> <i
-                                                class="fas fa-sign-out-alt"></i>
+                                                                           this.closest('form').submit();"
+                                        type="button"><span> <i class="fas fa-sign-out-alt"></i>
                                         </span> Logout</button>
                                 </form>
                             </div>
@@ -174,7 +174,9 @@
                                                                 <td>
                                                                     <h5>${{ number_format($order->total, 2) }}</h5>
                                                                 </td>
-                                                                <td><a class="view_invoice">View Details</a></td>
+                                                                <td><a href="{{ route('order.invoice', $order->id) }}"
+                                                                        class="view_invoice">View Details</a></td>
+
                                                             </tr>
                                                         @endforeach
 
@@ -407,6 +409,16 @@
                     }
                 });
             });
+        });
+    </script>
+@endpush
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            if (window.location.hash === '#v-pills-profile') {
+                $('#v-pills-profile-tab').tab('show');
+            }
         });
     </script>
 @endpush
