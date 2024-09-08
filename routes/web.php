@@ -20,7 +20,6 @@ Route::get('/', [FrontendController::class,'index'])->name('home');
 
 Route::group(['middleware'=>'auth'], function(){
     Route::get('frontend/dashboard',[DashboardController::class,'index'])->name('dashboard');
-    Route::get('/dashboard/order/{id}', [DashboardController::class, 'showOrderInvoice'])->name('order.invoice');
     Route::put('User/profile',[ProfileController::class,'updateProfile'])->name('profile.update');
     Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('password.update');
     Route::post('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar.update');
