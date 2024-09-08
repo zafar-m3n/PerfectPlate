@@ -8,7 +8,7 @@
         <div class="fp__breadcrumb_overlay">
             <div class="container">
                 <div class="fp__breadcrumb_text">
-                    <h1>Order Sucess</h1>
+                    <h1>Order Success</h1>
                     <h6 style="color: white; text-align:center;">Your order has been successfully placed. Check your orders
                         page for updates on
                         the order.</h6>
